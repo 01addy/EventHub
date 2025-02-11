@@ -21,6 +21,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, setShowLogin }) => {
     } else {
       setShowLogin(true);
     }
+    setIsMenuOpen(false);
   };
 
   const toggleMenu = () => {
