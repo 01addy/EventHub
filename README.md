@@ -1,4 +1,4 @@
-# Event Management Website
+# EventHub
 
 A full-stack event management platform built with React.js, Node.js, and MongoDB to create, manage, and attend events seamlessly.  
 🔗 [Live Demo](https://event-hub-liard-three.vercel.app/)
