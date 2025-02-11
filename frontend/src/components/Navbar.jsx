@@ -27,6 +27,10 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, setShowLogin }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav
       className={`w-full py-4 px-8 fixed top-0 left-0 z-50 transition-all duration-300 ${
