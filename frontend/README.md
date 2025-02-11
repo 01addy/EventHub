@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# EventHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack event management platform built with React.js, Node.js, and MongoDB to create, manage, and attend events seamlessly.  
+🔗 [Live Demo](https://event-hub-liard-three.vercel.app/)
 
-## Available Scripts
+## 📌 Features
 
-In the project directory, you can run:
+### 🌐 Frontend (React.js)
+- **User Authentication**  
+  - Register/Login with JWT authentication.  
+  - Includes a "Guest Login" option.
+  
+- **Event Dashboard**  
+  - View upcoming & past events with category/date filters.
+  
+- **Event Creation**  
+  - Create events with details like name, description, and date/time.
+  
+- **Real-Time Attendee List**  
+  - Updates the number of attendees live using Socket.IO.
+  
+- **Responsive Design**  
+  - Optimized for all devices.
 
-### `npm start`
+### 🛠 Backend (Node.js + Express.js)
+- **Authentication API**  
+  - Secure user authentication with JWT.
+  
+- **Event Management API**  
+  - CRUD operations for events with ownership control.
+  
+- **Real-Time Updates**  
+  - WebSockets for live attendee updates.
+  
+- **Database**  
+  - Efficient data storage using MongoDB Atlas.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📡 Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| Technology       | Usage                     |
+|------------------|---------------------------|
+| React.js         | Frontend UI               |
+| Node.js + Express.js | Backend API           |
+| MongoDB Atlas    | Database                  |
+| Socket.IO        | Real-time communication   |
+| Cloudinary       | Image hosting             |
+| Vercel           | Frontend hosting          |
+| Render           | Backend hosting           |
 
-### `npm test`
+## 🚀 Deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Frontend:** Hosted on Vercel  
+- **Backend:** Hosted on Render  
+- **Database:** Hosted on MongoDB Atlas  
+- **Image Hosting:** Cloudinary
