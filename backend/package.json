@@ -35,4 +35,5 @@
     "socket.io": "^4.8.1",
     "swiper": "^11.2.2"
   }
+  "type": "module"
 }
