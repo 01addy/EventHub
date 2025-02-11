@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { FaMoon, FaSun, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import { FaMoon, FaSun, FaSignInAlt, FaSignOutAlt, FaBars } from "react-icons/fa";
 import { DarkModeContext } from "../context/DarkModeContext.jsx";
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated, setShowLogin }) => {
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   const [user, setUser] = useState(localStorage.getItem("user"));
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     setUser(localStorage.getItem("user"));
@@ -25,6 +26,10 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, setShowLogin }) => {
     }
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav className={`w-full py-4 px-8 fixed top-0 left-0 z-50 transition-all duration-300 
       ${darkMode ? "bg-gray-900 text-white shadow-lg" : "bg-white text-gray-900 shadow-md"}`}>
@@ -34,6 +39,16 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, setShowLogin }) => {
           EventHub
         </Link>
 
+        {/* Hamburger Icon for Mobile */}
+        <div className="lg:hidden">
+          <button
+            onClick={toggleMenu}
+            className="p-2 rounded-full text-gray-800 dark:text-white hover:text-purple-600"
+          >
+            <FaBars size={24} />
+          </button>
+        </div>
+
         <div className="space-x-6">
           <Link to="/" className="hover:text-purple-500 transition">Home</Link>
           <Link to="/dashboard" className="hover:text-purple-500 transition">Events</Link>
@@ -41,6 +56,22 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, setShowLogin }) => {
           <Link to="/my-events" className="hover:text-purple-500 transition">My Events</Link>
           <Link to="/about" className="hover:text-purple-500 transition">About</Link>
           <Link to="/contact" className="hover:text-purple-500 transition">Contact Us</Link>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        <div
+          className={`lg:hidden absolute top-16 left-0 w-full bg-gray-900 text-white transition-all duration-300 ${
+            isMenuOpen ? "block" : "hidden"
+          }`}
+        >
+          <div className="flex flex-col items-center">
+            <Link to="/" className="py-2 px-4 w-full text-center hover:text-purple-500 transition">Home</Link>
+            <Link to="/dashboard" className="py-2 px-4 w-full text-center hover:text-purple-500 transition">Events</Link>
+            <Link to="/create-event" className="py-2 px-4 w-full text-center hover:text-purple-500 transition">Create Event</Link>
+            <Link to="/my-events" className="py-2 px-4 w-full text-center hover:text-purple-500 transition">My Events</Link>
+            <Link to="/about" className="py-2 px-4 w-full text-center hover:text-purple-500 transition">About</Link>
+            <Link to="/contact" className="py-2 px-4 w-full text-center hover:text-purple-500 transition">Contact Us</Link>
+          </div>
         </div>
 
         {/* Icons  */}
