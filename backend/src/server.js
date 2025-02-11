@@ -29,7 +29,7 @@ const connectDB = async () => {
 connectDB();
 
 app.use(cors({
-    origin: ["http://localhost:3000", "https://event-hub-five.vercel.app"],
+    origin: ["http://localhost:3000", "https://event-hub-liard-three.vercel.app/"],
     credentials: true,
 }));
 
