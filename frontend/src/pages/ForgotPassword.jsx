@@ -12,7 +12,7 @@ const ForgotPassword = ({ isOpen, onClose }) => {
 
   const handleSendCode = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/send-code", { email });
+      const response = await axios.post("https://event-hub-1gy9.onrender.com/api/auth/send-code", { email });
       alert("Confirmation code sent to your email!");
       setStep(2);
     } catch (err) {
@@ -22,7 +22,7 @@ const ForgotPassword = ({ isOpen, onClose }) => {
 
   const handleVerifyCode = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/verify-code", { email, code });
+      const response = await axios.post("https://event-hub-1gy9.onrender.com/api/auth/verify-code", { email, code });
       alert("Code verified successfully!");
       setStep(3);
     } catch (err) {
@@ -37,7 +37,7 @@ const ForgotPassword = ({ isOpen, onClose }) => {
     }
   
     try {
-      await axios.post("http://localhost:5000/api/auth/reset-password", { email, newPassword });
+      await axios.post("https://event-hub-1gy9.onrender.com/api/auth/reset-password", { email, newPassword });
       alert("Password successfully reset! You can now log in.");
       onClose();
     } catch (err) {

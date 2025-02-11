@@ -104,7 +104,7 @@ const CreateEvent = () => {
             console.log("Final FormData Sent:", formData);
     
             await axios.post(
-                "http://localhost:5000/api/events/create",
+                "https://event-hub-1gy9.onrender.com/api/events/create",
                 formData, 
                 {
                     headers: {

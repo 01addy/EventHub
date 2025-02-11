@@ -39,7 +39,7 @@ const MyEvents = () => {
 
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/events/created", {
+        const response = await axios.get("https://event-hub-1gy9.onrender.com/api/events/created", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setEvents(response.data);

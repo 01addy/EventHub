@@ -43,7 +43,7 @@ const SignUp = ({ isOpen, onClose }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+      const response = await axios.post("https://event-hub-1gy9.onrender.com/api/auth/signup", {
         name,
         gender,
         country: country?.label,

@@ -11,7 +11,7 @@ const EventForm = () => {
   const handleCreateEvent = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/events", { name, description, date });
+      await axios.post("https://event-hub-1gy9.onrender.com/api/events", { name, description, date });
       navigate("/");
     } catch (err) {
       console.error("Event creation failed");

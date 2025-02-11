@@ -5,7 +5,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://event-hub-1gy9.onrender.com");
 
 const Dashboard = () => {
   const { darkMode } = useContext(DarkModeContext);
@@ -29,7 +29,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/events");
+        const response = await axios.get("https://event-hub-1gy9.onrender.com/api/events");
         console.log("Dashboard Events:", response.data);
         setEvents(response.data);
       } catch (error) {
@@ -133,7 +133,7 @@ const Dashboard = () => {
         }
 
         await axios.post(
-            "http://localhost:5000/api/events/enroll",
+            "https://event-hub-1gy9.onrender.com/api/events/enroll",
             {
                 eventId: event._id,
                 userEmail: user.email,
