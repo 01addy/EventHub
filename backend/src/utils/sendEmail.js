@@ -17,11 +17,11 @@ export const sendEmail = async (to, subject, text) => {
 
     const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: email,
-    subject: `Registration Successfull!!`,
+    to,
+    subject: `Registration Successful!!`,
     html: `
       <div style="font-family: Arial, sans-serif; padding: 10px; border: 1px solid #ddd;">
-        <h2 style="color: #4CAF50;">🎉 Registration Successfull!</h2>
+        <h2 style="color: #4CAF50;">🎉 Registration Successful!</h2>
         <p>Hello,</p>
         <p>You have successfully registered your account in <strong>EventHub</strong> event!</p>
         <p> Create a new Event or Enroll in an event now!!</p>
