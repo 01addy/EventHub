@@ -156,12 +156,12 @@ const Dashboard = () => {
 
         
       if (response.data.message === "Already enrolled") {
-            alert("You are already enrolled in this event.");
+            window.confirm("You are already enrolled in this event.");
             setIsEnrolling(false);
             return;
         }
 
-        alert("Enrolled successfully!");
+        window.confirm("Enrolled successfully!");
         navigate("/dashboard");
 
     } catch (error) {
