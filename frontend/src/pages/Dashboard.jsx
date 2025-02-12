@@ -17,6 +17,7 @@ const Dashboard = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [isEnrolling, setIsEnrolling] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [setShowLoginModal] = useState(false); 
 
   // Predefined Categories for Events
@@ -155,21 +156,15 @@ const Dashboard = () => {
         );
 
         
-      if (response.data.message === "Already enrolled") {
-            window.confirm("You are already enrolled in this event.");
-            setIsEnrolling(false);
-            return;
+      alert("Enrolled Successfully!");
+            navigate("/dashboard");
+        } catch (error) {
+            console.error("Error in enrolling :", error.response?.data || error.message);
+            alert("Enrolling Failed.");
+        } finally {
+            setLoading(false);
         }
-
-        window.confirm("Enrolled successfully!");
-        navigate("/dashboard");
-
-    } catch (error) {
-        alert(error.response?.data?.message || "Failed to enroll");
-    } finally {
-        setIsEnrolling(false);
-    }
-};
+    };
 
   return (
     <div
