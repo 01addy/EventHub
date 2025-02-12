@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/Users.js";
+import { sendEmail} from "../utils/sendEmail.js";
 
 // Register a new user
 export const registerUser = async (req, res) => {
@@ -28,6 +29,7 @@ export const registerUser = async (req, res) => {
     });
 
     await newUser.save();
+    await sendEmail(userEmail, "Sign Up Confirmation");
 
     res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
