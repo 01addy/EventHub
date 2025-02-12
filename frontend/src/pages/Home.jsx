@@ -24,8 +24,9 @@ const Home = () => {
   const featuredEvents = [
     { id: 1, title: "Tech Conference 2025", image: "https://res.cloudinary.com/dbppugijm/image/upload/v1739100652/Tech_Conference_lajnve.jpg" },
     { id: 2, title: "Music Festival", image: "https://res.cloudinary.com/dbppugijm/image/upload/v1739100720/Music-Festivals_y7jlj7.jpg" },
-    { id: 3, title: "Startup Meetup", image: "https://res.cloudinary.com/dbppugijm/image/upload/v1739100810/Startup_Meet_uboevl.jpg" },
+    { id: 3, title: "India Energy Week", image: "https://res.cloudinary.com/dbppugijm/image/upload/v1739229016/events/y7munphhukubhbkhxyr5.jpg" },
     { id: 4, title: "Football Tournament", image: "https://res.cloudinary.com/dbppugijm/image/upload/v1739101004/football-tournament_oz6i4j.jpg" },
+    { id: 4, title: "NEXTECH HR Summit", image: "https://res.cloudinary.com/dbppugijm/image/upload/v1739229811/events/hhzodcsuac52dl4hhpo9.png" },
   ];
 
   return (
