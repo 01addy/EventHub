@@ -91,6 +91,7 @@ const CreateEvent = () => {
     
         try {
             const token = localStorage.getItem("token");
+            console.log("Token being sent:", token);
     
             const formData = new FormData();
             formData.append("name", eventData.name);
