@@ -156,23 +156,19 @@ const Dashboard = () => {
 
         
       if (response.data.message === "Already enrolled") {
-        alert("You are already enrolled in this event.");
-      } else {
+            alert("You are already enrolled in this event.");
+            setIsEnrolling(false);
+            return;
+        }
+
         alert("Enrolled successfully!");
         navigate("/dashboard");
-      }
 
     } catch (error) {
-    if (error.response?.data?.message === "Already enrolled") {
-      alert("You are already enrolled in this event.");
-      navigate("/dashboard");
-    } else {
-      alert(error.response?.data?.message || "Failed to enroll");
-      navigate("/dashboard");
+        alert(error.response?.data?.message || "Failed to enroll");
+    } finally {
+        setIsEnrolling(false);
     }
-  } finally {
-    setIsEnrolling(false);
-  }
 };
 
   return (
