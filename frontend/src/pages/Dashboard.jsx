@@ -15,6 +15,7 @@ const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isEnrolling, setIsEnrolling] = useState(false);
   const [setShowLoginModal] = useState(false); 
 
   // Predefined Categories for Events
@@ -122,13 +123,16 @@ const Dashboard = () => {
   });
 
   const handleEnroll = async (event) => {
+    if (isEnrolling) return;
     try {
+        setIsEnrolling(true);
         const token = localStorage.getItem("token");
         const user = JSON.parse(localStorage.getItem("user"));
         
         if (!token || !user) {
             alert("Please log in to enroll.");
             setShowLoginModal(true);
+            setIsEnrolling(false);
             return;
         }
 
@@ -149,8 +153,9 @@ const Dashboard = () => {
             }
         );
 
-        setSelectedEvent(null);
+        
         alert("Enrolled successfully!");
+        setSelectedEvent(null);
         
 
     } catch (error) {
@@ -162,8 +167,7 @@ const Dashboard = () => {
         }
     }
     finally {
-        
-        setSelectedEvent(null);
+       setIsEnrolling(false);
     }
 };
 
@@ -346,12 +350,12 @@ const Dashboard = () => {
                 📅 Date: {formatDate(selectedEvent.date)}
               </p>
 
-              {/* Enroll Button (More Space & Styling) */}
+              {/* Enroll Button */}
               {!isEventExpired(selectedEvent.date) && (
                 <button
                   onClick={() => handleEnroll(selectedEvent)}
                   className="mt-6 w-full bg-[#7a8ae5] text-white py-3 rounded-md hover:bg-[#5a6ab8] transition text-lg font-semibold shadow-md"
-                  disabled={selectedEvent?.enrolling}
+                  disabled={isEnrolling || isEventExpired(selectedEvent.date)}
                 >
                   {selectedEvent?.enrolling ? "Enrolling..." : isUserLoggedIn ? "Enroll Now" : "Log in to Enroll"}
                 </button>            
