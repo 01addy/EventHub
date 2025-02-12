@@ -25,8 +25,10 @@ router.get("/", async (req, res) => {
 router.post("/create", authMiddleware, upload.single("image"), async (req, res) => {
     try {
         console.log("Received request to create event.");
+        console.log("Authenticated User:", req.user);
         console.log("Request body:", req.body);
         console.log("Uploaded file:", req.file);
+
 
         const { name, description, category, date } = req.body;
         const userId = req.user.id; 
@@ -69,7 +71,7 @@ router.post("/create", authMiddleware, upload.single("image"), async (req, res) 
 
         
         const newEvent = new Event({ userId, name, description, category, date, image: imageUrl });
-        console.log("Saving event with image URL:", imageUrl);
+        console.log("Saving event with userId:", userId, "and image URL:", imageUrl);
         await newEvent.save();
 
         res.status(201).json({ message: "Event created successfully", event: newEvent });
