@@ -102,6 +102,10 @@ router.post("/enroll", authMiddleware, async (req, res) => {
             return res.status(400).json({ message: "You are already enrolled in this event." });
         }
 
+        res.status(200).json({ message: "Enrollment successful. Confirmation email sent!" });
+        event.attendees.push(userEmail);
+        event.attendeeCount += 1;
+
         io.emit("eventUpdated", event);
 
         await sendEnrollmentConfirmation(userEmail, {
@@ -112,9 +116,7 @@ router.post("/enroll", authMiddleware, async (req, res) => {
             image: event.image,
         });
 
-        res.status(200).json({ message: "Enrollment successful. Confirmation email sent!" });
-        event.attendees.push(userEmail);
-        event.attendeeCount += 1;
+        
         await event.save();
 
 
