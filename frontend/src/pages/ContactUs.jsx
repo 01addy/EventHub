@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { Typewriter } from 'react-simple-typewriter';
@@ -7,6 +8,8 @@ import { DarkModeContext } from "../context/DarkModeContext";
 const ContactUs = () => {
   const { darkMode } = useContext(DarkModeContext);
   const [fadeIn, setFadeIn] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setFadeIn(true);
@@ -21,10 +24,17 @@ const ContactUs = () => {
     }
   }, [darkMode]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
+  };
+
   return (
     <div className={`container mx-auto px-6 py-12 transition-opacity duration-[1200ms] ease-in-out ${fadeIn ? "opacity-100" : "opacity-0"} ${darkMode ? "bg-[#1E1E2E] text-white" : "bg-gradient-to-r from-blue-500 to-purple-500 text-white"}`}>
       
-      {/* Page Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,14 +68,12 @@ const ContactUs = () => {
         </p>
       </motion.div>
 
-
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 1.2, ease: "easeInOut" }}
         className="grid md:grid-cols-2 gap-8 mt-10"
       >
-        {/* Contact Info */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
@@ -87,33 +95,39 @@ const ContactUs = () => {
           </div>
         </motion.div>
 
-        {/* Contact Form */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
         >
           <h3 className="text-2xl font-semibold mb-3 text-[#7a8ae5]">Send a Message</h3>
-          <form>
-            <div className="mb-4">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Your Name</label>
-              <input type="text" className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-black dark:text-white focus:ring-2 focus:ring-[#7a8ae5]" />
+          
+          {submitted ? (
+            <div className="text-green-500 font-bold text-center">
+              Thank you for your message. We kindly ask for some time to review and respond to you. We appreciate your patience.
             </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Your Name</label>
+                <input type="text" required className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-black dark:text-white focus:ring-2 focus:ring-[#7a8ae5]" />
+              </div>
 
-            <div className="mb-4">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Your Email</label>
-              <input type="email" className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-black dark:text-white focus:ring-2 focus:ring-[#7a8ae5]" />
-            </div>
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Your Email</label>
+                <input type="email" required className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-black dark:text-white focus:ring-2 focus:ring-[#7a8ae5]" />
+              </div>
 
-            <div className="mb-4">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Message</label>
-              <textarea rows="4" className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-black dark:text-white focus:ring-2 focus:ring-[#7a8ae5]"></textarea>
-            </div>
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Message</label>
+                <textarea rows="4" required className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-black dark:text-white focus:ring-2 focus:ring-[#7a8ae5]"></textarea>
+              </div>
 
-            <button type="submit" className="w-full py-2 bg-purple-700 hover:bg-[#5a6ab8] text-white font-bold rounded-md transition-all duration-300">
-              Send Message
-            </button>
-          </form>
+              <button type="submit" className="w-full py-2 bg-purple-700 hover:bg-[#5a6ab8] text-white font-bold rounded-md transition-all duration-300">
+                Send Message
+              </button>
+            </form>
+          )}
         </motion.div>
       </motion.div>
     </div>
