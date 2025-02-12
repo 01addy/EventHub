@@ -148,9 +148,15 @@ const Dashboard = () => {
         );
 
         alert("Enrolled successfully!");
+        setSelectedEvent(null);
 
     } catch (error) {
         alert(`Failed to enroll: ${error.response?.data?.message || "Unknown error"}`);
+    if (errorMessage.includes("already enrolled")) {
+            alert("You are already enrolled in this event.");
+        } else {
+            alert(`Failed to enroll: ${errorMessage}`);
+        }
     }
 };
 
