@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../context/DarkModeContext";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
@@ -158,18 +159,16 @@ const Dashboard = () => {
         alert("You are already enrolled in this event.");
       } else {
         alert("Enrolled successfully!");
+        navigate("/dashboard");
       }
-
-      setSelectedEvent(null);
-      setTimeout(() => {
-      setSelectedEvent(null);
-      }, 300);
 
     } catch (error) {
     if (error.response?.data?.message === "Already enrolled") {
       alert("You are already enrolled in this event.");
+      navigate("/dashboard");
     } else {
       alert(error.response?.data?.message || "Failed to enroll");
+      navigate("/dashboard");
     }
   } finally {
     setIsEnrolling(false);
