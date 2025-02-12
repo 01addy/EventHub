@@ -29,7 +29,7 @@ export const registerUser = async (req, res) => {
     });
 
     await newUser.save();
-    await sendEmail(userEmail, "Sign Up Confirmation");
+    await sendEmail(email, "Registration Successful!!");
 
     res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
