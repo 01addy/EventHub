@@ -91,17 +91,20 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, setShowLogin }) => {
         }`}
       >
         <div className="flex flex-col items-center py-4 space-y-4">
-          <Link to="/" className="w-full text-center py-2 px-4 hover:text-purple-500 transition">Home</Link>
-          <Link to="/dashboard" className="w-full text-center py-2 px-4 hover:text-purple-500 transition">Events</Link>
-          <Link to="/create-event" className="w-full text-center py-2 px-4 hover:text-purple-500 transition">Create Event</Link>
-          <Link to="/my-events" className="w-full text-center py-2 px-4 hover:text-purple-500 transition">My Events</Link>
-          <Link to="/about" className="w-full text-center py-2 px-4 hover:text-purple-500 transition">About</Link>
-          <Link to="/contact" className="w-full text-center py-2 px-4 hover:text-purple-500 transition">Contact Us</Link>
+          <Link to="/" className="w-full text-center py-2 px-4 hover:text-purple-500 transition" onClick={closeMenu}>Home</Link>
+          <Link to="/dashboard" className="w-full text-center py-2 px-4 hover:text-purple-500 transition" onClick={closeMenu}>Events</Link>
+          <Link to="/create-event" className="w-full text-center py-2 px-4 hover:text-purple-500 transition" onClick={closeMenu}>Create Event</Link>
+          <Link to="/my-events" className="w-full text-center py-2 px-4 hover:text-purple-500 transition" onClick={closeMenu}>My Events</Link>
+          <Link to="/about" className="w-full text-center py-2 px-4 hover:text-purple-500 transition" onClick={closeMenu}>About</Link>
+          <Link to="/contact" className="w-full text-center py-2 px-4 hover:text-purple-500 transition" onClick={closeMenu}>Contact Us</Link>
 
           {/* Theme Switcher */}
           <button
             className="w-full text-center py-2 px-4 hover:text-purple-500 transition"
-            onClick={toggleDarkMode}
+            onClick={() => {
+            toggleDarkMode();
+            closeMenu(); // Closes menu after toggling theme
+            }}
           >
             {darkMode ? (
               <FaSun size={20} className="text-yellow-400" />
