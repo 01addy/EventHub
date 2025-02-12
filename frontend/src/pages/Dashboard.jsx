@@ -17,7 +17,6 @@ const Dashboard = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [isEnrolling, setIsEnrolling] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [setShowLoginModal] = useState(false); 
 
   // Predefined Categories for Events
@@ -126,11 +125,12 @@ const Dashboard = () => {
 
   const handleEnroll = async (event) => {
     if (isEnrolling) return;
+
     try {
         setIsEnrolling(true);
         const token = localStorage.getItem("token");
         const user = JSON.parse(localStorage.getItem("user"));
-        
+
         if (!token || !user) {
             alert("Please log in to enroll.");
             setShowLoginModal(true);
@@ -155,16 +155,26 @@ const Dashboard = () => {
             }
         );
 
-        
-      alert("Enrolled Successfully!");
-            navigate("/dashboard");
-        } catch (error) {
-            console.error("Error in enrolling :", error.response?.data || error.message);
-            alert("Enrolling Failed.");
-        } finally {
-            setLoading(false);
+       
+        if (response.data.message === "Already enrolled") {
+            alert("You are already enrolled in this event.");
+        } else {
+            alert("Enrolled successfully!");
         }
-    };
+
+        setTimeout(() => navigate("/dashboard"), 100); 
+
+    } catch (error) {
+        if (error.response?.data?.message === "Already enrolled") {
+            return;
+        }
+        
+        alert(error.response?.data?.message || "Failed to enroll");
+    } finally {
+        setIsEnrolling(false);
+    }
+};
+
 
   return (
     <div
