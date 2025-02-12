@@ -134,7 +134,7 @@ const Dashboard = () => {
 
         setSelectedEvent({ ...event, enrolling: true });
 
-        const response = await axios.post(
+        await axios.post(
             "https://event-hub-1gy9.onrender.com/api/events/enroll",
             {
                 eventId: event._id,
