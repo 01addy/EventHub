@@ -138,7 +138,7 @@ const Dashboard = () => {
 
         setSelectedEvent({ ...event, enrolling: true });
 
-        await axios.post(
+        const response = await axios.post(
             "https://event-hub-1gy9.onrender.com/api/events/enroll",
             {
                 eventId: event._id,
@@ -155,19 +155,15 @@ const Dashboard = () => {
 
         
         alert("Enrolled successfully!");
-        setSelectedEvent(null);
+        setTimeout(() => {
+            setSelectedEvent(null);
+        }, 300);
         
 
-    } catch (error) {
-        alert(`Failed to enroll: ${error.response?.data?.message || "Unknown error"}`);
-    if (errorMessage.includes("already enrolled")) {
-            alert("You are already enrolled in this event.");
-        } else {
-            alert(`Failed to enroll: ${errorMessage}`);
-        }
-    }
-    finally {
-       setIsEnrolling(false);
+    }  catch (error) {
+        alert(error.response?.data?.message || "Failed to enroll");
+    } finally {
+        setIsEnrolling(false);
     }
 };
 
@@ -318,7 +314,7 @@ const Dashboard = () => {
                 ✖
               </button>
 
-              {/* Event Image (Larger & More Styled) */}
+              {/* Event Image */}
               {selectedEvent.image && (
                 <img 
                   src={selectedEvent.image} 
@@ -327,12 +323,12 @@ const Dashboard = () => {
                 />
               )}
 
-              {/* Event Title (More Space & Stylish Font) */}
+              {/* Event Title */}
               <h2 className="text-3 xl font-extrabold text-center text-[#7a8ae5] mt-4">
                 {selectedEvent.name}
               </h2>
 
-              {/* Event Description (Enhanced UI) */}
+              {/* Event Description */}
                 <div className="mt-6 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 p-5 rounded-md shadow-lg border border-gray-300 dark:border-gray-700">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white border-b pb-2 mb-3">
                     Event Details
