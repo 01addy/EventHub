@@ -132,7 +132,9 @@ const Dashboard = () => {
             return;
         }
 
-        await axios.post(
+        setSelectedEvent({ ...event, enrolling: true });
+
+        const response = await axios.post(
             "https://event-hub-1gy9.onrender.com/api/events/enroll",
             {
                 eventId: event._id,
@@ -147,8 +149,9 @@ const Dashboard = () => {
             }
         );
 
-        alert("Enrolled successfully!");
         setSelectedEvent(null);
+        alert("Enrolled successfully!");
+        
 
     } catch (error) {
         alert(`Failed to enroll: ${error.response?.data?.message || "Unknown error"}`);
@@ -157,6 +160,10 @@ const Dashboard = () => {
         } else {
             alert(`Failed to enroll: ${errorMessage}`);
         }
+    }
+    finally {
+        
+        setSelectedEvent(null);
     }
 };
 
@@ -344,8 +351,9 @@ const Dashboard = () => {
                 <button
                   onClick={() => handleEnroll(selectedEvent)}
                   className="mt-6 w-full bg-[#7a8ae5] text-white py-3 rounded-md hover:bg-[#5a6ab8] transition text-lg font-semibold shadow-md"
+                  disabled={selectedEvent?.enrolling}
                 >
-                  {isUserLoggedIn ? "Enroll Now" : "Log in to Enroll"}
+                  {selectedEvent?.enrolling ? "Enrolling..." : isUserLoggedIn ? "Enroll Now" : "Log in to Enroll"}
                 </button>            
               )}
             </div>
