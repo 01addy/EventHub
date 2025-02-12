@@ -154,17 +154,26 @@ const Dashboard = () => {
         );
 
         
+      if (response.data.message === "Already enrolled") {
+        alert("You are already enrolled in this event.");
+      } else {
         alert("Enrolled successfully!");
-        setTimeout(() => {
-            setSelectedEvent(null);
-        }, 300);
-        
+      }
 
-    }  catch (error) {
-        alert(error.response?.data?.message || "Failed to enroll");
-    } finally {
-        setIsEnrolling(false);
+      setSelectedEvent(null);
+      setTimeout(() => {
+      setSelectedEvent(null);
+      }, 300);
+
+    } catch (error) {
+    if (error.response?.data?.message === "Already enrolled") {
+      alert("You are already enrolled in this event.");
+    } else {
+      alert(error.response?.data?.message || "Failed to enroll");
     }
+  } finally {
+    setIsEnrolling(false);
+  }
 };
 
   return (
