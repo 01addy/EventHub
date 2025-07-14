@@ -77,7 +77,7 @@ const About = () => {
             Proficient in React.js, Node.js, and MongoDB, always seeking innovative solutions.
           </p>
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1PQrkVZA_p2h3NhubDaI5WS8et-NbPypf/view?usp=sharing"
             download="Aditya_Pratap_Singh_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
