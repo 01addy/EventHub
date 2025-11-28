@@ -2,7 +2,7 @@
 
 A full-stack event management platform built with React.js, Node.js, and MongoDB to create, manage, and attend events seamlessly.  
 🔗 [Live Demo](https://event-hub-liard-three.vercel.app/)
-
+[IMPORTANT- The reason why you aren't able to sign up/login is that may be the MongoDB server is offline at the moment. Please continue as Guest to explore the website or contact the developer if Sign up and Login is essential.]
 ## 📌 Features
 
 ### 🌐 Frontend (React.js)
