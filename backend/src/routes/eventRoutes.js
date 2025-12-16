@@ -1,9 +1,9 @@
+// backend/src/routes/eventRoutes.js
 import express from "express";
 import multer from "multer";
 import cloudinary from "../utils/cloudinary.js";
 import Event from "../models/Event.js";
 import authMiddleware from "../middleware/authMiddleware.js";
-import { sendEnrollmentConfirmation } from "../utils/sendEmail.js";
 import { io } from "../server.js";
 
 const router = express.Router();
@@ -42,7 +42,7 @@ router.post("/create", authMiddleware, upload.single("image"), async (req, res) 
             try {
                 console.log("Uploading image to Cloudinary...");
 
-                // Upload file buffer to Cloudinary using a Promise
+                // Upload file buffer to Cloudinary
                 const result = await new Promise((resolve, reject) => {
                     const uploadStream = cloudinary.uploader.upload_stream(
                         { folder: "events" },
