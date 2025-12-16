@@ -1,3 +1,5 @@
+// EventHub/frontend/src/pages/SignUp.jsx
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
@@ -53,7 +55,6 @@ const SignUp = ({ isOpen, onClose }) => {
       });
 
       alert("Registration Successful!");
-      console.log("Signup Success:", response.data);
       onClose();
     } catch (error) {
       console.error("Signup Error:", error.response?.data || error.message);
